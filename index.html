@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=bb9a19ab12ab00b80f8fbbbef995cc92"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bb9a19ab12ab00b80f8fbbbef995cc92"></script>
     <title>마이 날씨</title>
     <style>
         *{margin: 0 auto; padding:0;
@@ -173,7 +173,7 @@
         var air = document.querySelector('.air');
 
         function show(Lat, Lon){
-            $.getJSON(`http://api.openweathermap.org/data/2.5/weather?lat=${Lat}&lon=${Lon}&appid=40d7472171c24ffd606b16a28494df8f&units=metric`,function(data){
+            $.getJSON(`https://api.openweathermap.org/data/2.5/weather?lat=${Lat}&lon=${Lon}&appid=40d7472171c24ffd606b16a28494df8f&units=metric`,function(data){
                 city.innerHTML = data.name;
                 icon.innerHTML = `<img src='http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png'>`;
                 text.innerHTML = data.main.temp + "&degC";
@@ -184,13 +184,13 @@
                     var ft = [];
                     ft[j] = new Date(fdata.list[(j+1)*8].dt*1000);
                         
-                    ficon[j].innerHTML = `<img src='http://openweathermap.org/img/wn/${fdata.list[(j+1)*8].weather[0].icon}.png' alt=''>`
+                    ficon[j].innerHTML = `<img src='https://openweathermap.org/img/wn/${fdata.list[(j+1)*8].weather[0].icon}.png' alt=''>`
                     ftext[j].innerHTML = fdata.list[(j+1)*8].weather[0].main;
                     ftemp[j].innerHTML = fdata.list[(j+1)*8].main.temp + "&deg;C";
                     ftime[j].innerHTML = ft[j].getDate()+"일";
                 }
             });
-            $.getJSON(`http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${Lat}&lon=${Lon}&appid=40d7472171c24ffd606b16a28494df8f`,function(airData){
+            $.getJSON(`https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${Lat}&lon=${Lon}&appid=40d7472171c24ffd606b16a28494df8f`,function(airData){
                 
                 // var airtime = new Date(airData.list[0].dt*1000);
                 // air.innerHTML = airtime + " ";
@@ -223,16 +223,16 @@
 
                 if(s_mise < 16 && mise < 31){
                     total_mise = "좋음";
-                    total_bg = "https://cdn.pixabay.com/photo/2013/11/02/03/19/girl-204327_960_720.jpg";
+                    total_bg = "https://previews.123rf.com/images/jyugem/jyugem1203/jyugem120300019/12828532-%EC%9D%BC%EB%B3%B8-%EC%95%84%EC%9D%B4%EB%93%A4%EC%9D%B4-%EC%A2%8B%EC%9D%80-%EB%82%A0%EC%94%A8%EB%A5%BC-%EA%B8%B0%EC%9B%90%ED%95%98%EB%8A%94-%EC%A2%85%EC%9D%B4-%EC%9D%B8%ED%98%95%EC%9D%98-%EC%BB%A4%ED%94%8C.jpg";
                 }else if(s_mise < 36 && mise < 81){
                     total_mise = "보통";
-                    total_bg = "https://cdn.pixabay.com/photo/2016/11/29/02/59/girl-1866959_960_720.jpg";
+                    total_bg = "https://t1.daumcdn.net/cfile/blog/17657A194A6C5CDE57";
                 }else if(s_mise < 72 && mise < 151){
                     total_mise = "나쁨";
                     total_bg = "https://img1.daumcdn.net/thumb/C176x176/?fname=https://k.kakaocdn.net/dn/bPL3er/btqGX4VQL4G/RpXVdr1BSSHPgqAqCx17j1/img.jpg";
                 }else{
                     total_mise = "매우나쁨";
-                    total_bg = "https://cdn.pixabay.com/photo/2017/08/21/16/22/gas-mask-2665909_960_720.png";
+                    total_bg = "https://en.pimg.jp/008/431/315/1/8431315.jpg";
                 }
 
                 air.innerHTML = ""; //초기화
